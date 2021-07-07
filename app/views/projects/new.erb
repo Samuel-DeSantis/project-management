@@ -1,0 +1,15 @@
+<h3>Create a New Project</h3>
+
+<form method='POST' action='/projects'>
+    <label>Client:</label>
+    <input type='text' name='client'><br><br>
+    <label>Summary:</label>
+    <input type='text' name='summary'><br><br>
+
+    <% User.all.each do |user| %>
+        <label><%= user.username %></label>
+        <input type='checkbox' id='user_<%= user.id %>' name='project[user_id]' value='<%= user.id %>'><br>
+    <% end %><br>
+    
+    <input type='submit' value='Create Project'>
+</form

@@ -1,0 +1,10 @@
+<h3>Project Overview</h3>
+<p>NOTE: Only the engineer assigned to the project can delete the respective project.</p>
+<p>Client : <%= @project.client %></p>
+<p>Summary : <%= @project.summary %></p>
+<p>Engineer : <%= @project.user.username %></p>
+
+<form action="/projects/<%= @project.id %>" method='POST'>
+    <input id='hidden' type='hidden' name='_method' value='DELETE'>
+    <input type='submit' value='Delete Project'>
+</form>

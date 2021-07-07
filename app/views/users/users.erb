@@ -1,0 +1,14 @@
+<h3>Users</h3>
+
+<dl><ol>
+<% @users.each do |user| %>
+    <li>
+        <dt><%= user.username %> : <%= user.discipline %> <%= user.level %></dt>
+        <dd><%=  %></dd>
+    </li>
+    <br>
+<% end %>
+</ol></dl>
+
+<h4>Create New:</h4>
+<a href='/projects/new'>Project</a>
