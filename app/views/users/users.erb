@@ -1,14 +1,37 @@
 <h3>Users</h3>
 
-<dl><ol>
-<% @users.each do |user| %>
-    <li>
-        <dt><%= user.username %> : <%= user.discipline %> <%= user.level %></dt>
-        <dd><%=  %></dd>
-    </li>
-    <br>
-<% end %>
-</ol></dl>
+<style>
+    table, th {
+        text-align : center;
+        border : 1px solid black;
+    }
+    td {
+        border-bottom : 1px solid black;
+        border-left : 1px solid black;
+        border-right : 1px solid black;
+    }
+</style>
+
+<p>The following table contains the engineering roster.</p>
+
+<table style='width:100%;'>
+    <tr>
+        <th>Engineer</th>
+        <th>Discipline</th>
+        <th>Level</th>
+        <th>Project Count</th>
+    </tr>
+    <% @users.order(:level).each do |user| %>
+        <tr>
+            <td><%= user.username %></td>
+            <td><%= user.discipline %></td>
+            <td><%= user.level %></td>
+            <td><%= user.projects.count %></td>
+        </tr>
+    <% end %>
+
+    
+</table>
 
 <h4>Create New:</h4>
 <a href='/projects/new'>Project</a>

@@ -2,14 +2,26 @@
 
 <form method='POST' action='/signup'>
     <label>Username</label>
-    <input type='text' name='username'><br>
+    <input type='text' name='username' placeholder='JohnDoe'><br>
     <label>Email</label>
-    <input type='text' name='email'><br>
+    <input type='text' name='email' placeholder='JohnDoe@email.com'><br>
     <label>Password</label>
-    <input type='text' name='password'><br>
-    <label>Level</label>
-    <input type='text' name='level'><br>
-    <label>Discipline</label>
-    <input type='text' name='discipline'><br>
+    <input type='password' name='password' placeholder='strong password'><br>
+    <label>Select a Level</label>
+    <select name='level'>
+        <option value='1'>1</option>
+        <option value='2'>2</option>
+        <option value='3'>3</option>
+        <option value='4'>4</option>
+        <option value='5'>5</option>
+    </select><br>
+    <label>Select a Discipline</label>
+    <select name='discipline'>
+        <option value='Mechanical'>Mechanical</option>
+        <option value='Electrical'>Electrical</option>
+        <option value='Industrial'>Industrial</option>
+        <option value='Chemical'>Chemical</option>
+    </select><br><br>
     <input type='submit' value='Sign Up'>
+    or <a href='/login'>Login</a>
 </form>
