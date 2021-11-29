@@ -5,3 +5,12 @@
 nav {
     text-decoration: none;
 }
+table, th {
+    text-align : center;
+    border : 1px solid black;
+}
+td {
+    border-bottom : 1px solid black;
+    border-left : 1px solid black;
+    border-right : 1px solid black;
+}

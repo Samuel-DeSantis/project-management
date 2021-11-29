@@ -1,0 +1,23 @@
+<%= @user.username %>
+<h3>Edit Your Profile</h3>
+<form method='POST' action='/users/<%= session[:user_id] %>'>
+    <input type='hidden' name='_method' value='PATCH'>
+    <label>Select a Level</label>
+    <select name='level' >
+        <option value='<%= @user.level %>' hidden ><%= @user.level %></option>
+        <option value='1'>1</option>
+        <option value='2'>2</option>
+        <option value='3'>3</option>
+        <option value='4'>4</option>
+        <option value='5'>5</option>
+    </select><br>
+    <label>Select a Discipline</label>
+    <select name='discipline' >
+        <option value='<%= @user.discipline %>' hidden ><%= @user.discipline %></option>
+        <option value='Mechanical'>Mechanical</option>
+        <option value='Electrical'>Electrical</option>
+        <option value='Industrial'>Industrial</option>
+        <option value='Chemical'>Chemical</option>
+    </select><br><br>
+    <input type='submit' value='Edit Profile'>
+</form>

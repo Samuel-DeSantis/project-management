@@ -1,0 +1,5 @@
+<h3>Your Profile</h3>
+<p>Username : <%= @user.username %></p>
+<p>Discipline : <%= @user.discipline %></p>
+<p>Level : <%= @user.level %></p>
+<a href='/users/<%= session[:user_id] %>/edit'>Edit Profile</a>

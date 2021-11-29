@@ -1,0 +1,2 @@
+placholder='<%= @user.discipline %>'
+placholder='<%= @user.level %>'

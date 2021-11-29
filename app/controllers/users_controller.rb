@@ -8,10 +8,15 @@ class UsersController < ApplicationController
         erb :'users/users'
     end
 
-    get '/users/:slug' do
-        @user = User.find_by_slug(params[:slug])
+    get '/users/:id' do
+        @user = User.find_by_id(params[:id])
         erb :'/users/show'
     end
+
+    # get '/users/:slug' do
+    #     @user = User.find_by_slug(params[:slug])
+    #     erb :'/users/show'
+    # end
 
     get '/signup' do
         if !logged_in?
@@ -28,6 +33,7 @@ class UsersController < ApplicationController
             @user = User.new(username: params[:username], email: params[:email], password: params[:password], level: params[:level], discipline: params[:discipline])
             @user.save
             session[:user_id] = @user.id
+            session[:username] = @user.username
             redirect to '/projects'
         end
     end
@@ -42,12 +48,25 @@ class UsersController < ApplicationController
 
     post '/login' do
         @user = User.find_by(username: params[:username])
-        if @user.password = params[:password]
+        if @user.authenticate(params[:password])#@user.password_digest == params[:password]
             session[:user_id] = @user.id
+            session[:username] = @user.username
             redirect to '/projects'
         else
             redirect to '/signup'
         end
+    end
+
+    get '/users/:id/edit' do
+        @user = User.find_by_id(params[:id])
+        erb :'/users/edit'
+    end
+
+    patch '/users/:id' do
+        @user = User.find_by_id(params[:id])
+        @user.update(level: params[:level], discipline: params[:discipline])
+        erb :'/users/show'
+
     end
 
     get '/logout' do
