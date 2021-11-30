@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
                 @project = Project.new
                 @project.client = params[:client]
                 @project.summary = params[:summary]
-                @project.user_id = params[:project][:user_id].to_i
+                @project.user = User.find_by_id(params[:user_id])
                 
                 if @project.save
                     redirect to "/projects/#{@project.id}"
@@ -42,14 +42,18 @@ class ProjectsController < ApplicationController
 
     get '/projects/:id/edit' do
         @project = Project.find_by_id(params[:id])
-        erb :'/projects/edit'
+        if current_user == @project.user
+            erb :'/projects/edit'
+        else
+            erb :'/projects/show'
+        end
     end
 
     patch '/projects/:id' do
         @project = Project.find_by_id(params[:id])
         @project.client = params[:client]
         @project.summary = params[:summary]
-        @project.user = params[:user_id]
+        @project.user = User.find_by_id(params[:user_id])
         @project.save
 
         redirect to "/projects/#{@project.id}"
