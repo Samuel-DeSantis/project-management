@@ -14,3 +14,11 @@ td {
     border-left : 1px solid black;
     border-right : 1px solid black;
 }
+
+.index-content {
+    text-align: center;
+}
+
+p {
+    color: blue;
+}

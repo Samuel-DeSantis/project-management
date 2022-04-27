@@ -3,6 +3,10 @@ require 'rack-flash'
 class UsersController < ApplicationController
     use Rack::Flash
 
+    get '/about' do
+        erb :'/users/about'
+    end
+
     get '/users' do
         @users = User.all
         erb :'users/users'

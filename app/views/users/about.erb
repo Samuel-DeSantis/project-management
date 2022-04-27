@@ -1,0 +1,5 @@
+<h3>About Us</h3>
+<% if session[:username] %>
+    <p>Hello <%= session[:username] %>, thanks for being a member!</p>
+<% end %>
+<a href='/'>Go back home</a>

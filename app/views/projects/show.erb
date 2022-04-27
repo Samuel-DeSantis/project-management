@@ -1,13 +1,71 @@
-<h3>Project Overview</h3>
-<p>NOTE: Only the engineer assigned to the project can edit and delete the respective project.</p>
-<p>Client : <%= @project.client %></p>
-<p>Summary : <%= @project.summary %></p>
-<p>Engineer : <%= @project.user.username %></p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <span class="navbar-brand" href="#">Project Manager > Project Overview</span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href='/projects/new'>Create New Project</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href='/projects'>Current Projects</a>
+        </li>
+      </ul>    
+    </div>
+  </div>
+</nav>
 
-<a href="/projects/<%= @project.id %>/edit">Edit Project</a>
-<br>
-<p>or</p>
-<form action="/projects/<%= @project.id %>" method='POST'>
-    <input id='hidden' type='hidden' name='_method' value='DELETE'>
-    <input type='submit' value='Delete Project'>
-</form>
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Client: <%= @project.client %></h5>
+    <br>
+    <p class="card-text">Summary: <%= @project.summary %></p>
+    <p class="card-text">Engineer: <%= @project.user.username %></p>
+    <br>
+    <div class="buttons">
+      <a href="/projects/<%= @project.id %>/edit" class="btn btn-success">Edit</a>
+      <form action="/projects/<%= @project.id %>" method='POST'>
+      <input id='hidden' type='hidden' name='_method' value='DELETE'>
+      <input id="delete" class="btn btn-danger" type='submit' value='Delete'>
+      </form>
+    </div>
+  </div>
+</div>
+<p class="note"><u>NOTE</u>: Only the engineer assigned to the project can edit and delete the respective project.</p>
+
+<%# <h3>Project Overview</h3> %>
+<%# <p>NOTE: Only the engineer assigned to the project can edit and delete the respective project.</p> %>
+<%# <p>Client : <%= @project.client </p> %>
+<%# <p>Summary : <%= @project.summary></p> %>
+<%# <p>Engineer : <%= @project.user.username </p> %>
+
+<%# <a href="/projects/<%= @project.id /edit">Edit Project</a> %>
+<%# <br> %>
+<%# <p>or</p> %>
+<%# <form action="/projects/<%= @project.id " method='POST'> %>
+    <%# <input id='hidden' type='hidden' name='_method' value='DELETE'> %>
+    <%# <input type='submit' value='Delete Project'> %>
+<%# </form> %>
+
+<style>
+.buttons {
+  display: flex;
+}
+.note {
+  margin-top: 15px;
+  margin-left: 33%;
+  margin-right: 33%;
+}
+.card {
+    margin-top: 15%;
+    margin-left: 33%;
+}
+.nav-item:hover {
+    text-shadow: 1px 1px 1px white;
+}
+#delete {
+  margin-left: 10px
+}
+</style>

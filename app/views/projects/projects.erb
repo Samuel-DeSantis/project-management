@@ -1,15 +1,44 @@
-<h3>Current Projects</h3>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <span class="navbar-brand" href="#">Project Manager > Current Projects</span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href='/projects/new'>Create New Project</a>
+        </li>
+    </div>
+  </div>
+</nav>
 
-<dl><ol>
-<% @projects.each do |project| %>
-    <li>
-        <dt><%= project.client %> : <%= project.user.username %></dt>
-        <dd><%= project.summary %></dd>
-        <a href="/projects/<%= project.id %>">See Project</a>
-    </li>
-    <br>
-<% end %>
-</ol></dl>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr class="table-dark">
+      <th scope="col">#</th>
+      <th scope="col">Engineer</th>
+      <th scope="col">Client</th>
+      <th scope="col">Project</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+      <% @projects.each_with_index do |project, index| %>
+        <tr>
+         <th scope="row"><%= index + 1 %></th>
+         <td><%= project.user.username %></td>
+         <td><%= project.client %></td>
+         <td><a href="/projects/<%= project.id %>"><%= project.summary %></a></td>
+         <%# <td><a href="/projects/<%= project.id ">See Project</a></td> %>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
+<p>Select a project to view, edit, and delete a project.</p>
 
-<h4>Create New:</h4>
-<a href='/projects/new'>Project</a>
+<style>
+.nav-item:hover {
+    text-shadow: 1px 1px 1px white;
+}
+</style>

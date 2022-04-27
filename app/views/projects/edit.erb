@@ -1,4 +1,47 @@
-<h3>Edit Your Project</h3>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <span class="navbar-brand" href="#">Project Manager > Edit Project</span>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href='/projects/new'>Create New Project</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href='/projects'>Current Projects</a>
+        </li>
+      </ul>    
+    </div>
+  </div>
+</nav>
+<br>
+<form class="edit-form" method='POST' action='/projects/<%= @project.id %>'>
+  <h2>Edit Project</h2>
+  <input type='hidden' name='_method' value='PATCH'>
+  <div class="mb-3">
+    <label class="form-label">Client</label>
+    <input type='text' class="form-control" name='client' value='<%= @project.client%>'>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Summary</label>
+    <input class="form-control" type='text' name='summary' value='<%= @project.summary%>'>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Engineer</label>
+    <select class="form-select" name='user_id'>
+      <option value='<%= @project.user.id %>'><%= @project.user.username %></option>
+       <% User.all.each do |user| %>
+        <option value='<%= user.id %>'><%= user.username %></option>
+      <% end %>
+    <select>
+  </div>
+  <div class="mb-3">
+    <input class="btn btn-primary" type='submit' value='Edit Project'>
+  </div>
+
+</form>
 
 <form method='POST' action='/projects/<%= @project.id %>'>
     <input type='hidden' name='_method' value='PATCH'>
@@ -18,3 +61,12 @@
     <br>
     <input type='submit' value='Edit Project'>
 </form>
+
+<style>
+.nav-item:hover {
+    text-shadow: 1px 1px 1px white;
+}
+.edit-form {
+  margin: 25%
+}
+</style>
